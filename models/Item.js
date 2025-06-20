@@ -1,9 +1,8 @@
-// minha-app-crud/models/Item.js
 
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database'); // Importa a conexão com o banco de dados
+const sequelize = require('../config/database'); 
 
-// Define o modelo 'Item'
+
 const Item = sequelize.define('Item', {
     id: {
         type: DataTypes.INTEGER,
@@ -12,15 +11,15 @@ const Item = sequelize.define('Item', {
     },
     nome: {
         type: DataTypes.STRING,
-        allowNull: false, // O campo 'nome' não pode ser nulo
+        allowNull: false, 
     },
     descricao: {
-        type: DataTypes.TEXT, // Usamos TEXT para descrições mais longas
-        allowNull: true,    // O campo 'descricao' pode ser nulo
+        type: DataTypes.TEXT,
+        allowNull: true,
     },
 }, {
-    tableName: 'items', // Nome da tabela no banco de dados (boa prática ser plural)
-    timestamps: true,   // Adiciona automaticamente os campos createdAt e updatedAt
+    tableName: 'items',
+    timestamps: true,
 });
 
-module.exports = Item; // Exporta o modelo Item
+module.exports = Item;

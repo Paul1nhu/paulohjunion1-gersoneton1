@@ -1,32 +1,27 @@
-// minha-app-crud/app.js
-
 const express = require('express');
 const app = express();
 const path = require('path');
-const sequelize = require('./config/database'); // Importa a conexão com o banco
-const Item = require('./models/Item');       // Importa o modelo Item
-
+const sequelize = require('./config/database');
+const Item = require('./models/Item');
 // Configurações do EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Configurações para servir arquivos estáticos (CSS, imagens, etc.)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Middlewares para processar dados de formulário
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// --- Rotas da Aplicação ---
+// Rotas do site
 
-// Rota principal (Tela Inicial)
+// Rota principal
 app.get('/', (req, res) => {
     res.render('index', {
         titulo: 'Curiosidades da Tecnologia'
     });
 });
 
-// Rota para a Tela de Dados (CRUD - Leitura)
+// Rota para a tela de dados
  app.get('/dados', async (req, res) => {
      try {
          const dadosDoBanco = await Item.findAll();
@@ -40,10 +35,7 @@ app.get('/', (req, res) => {
      }
  });
 
-// Rota para o Formulário de Inclusão/Alteração (agora aceita ID para edição)
-
-
-// Rota para o Formulário de INCLUSÃO (quando não há ID na URL)
+// Rota para o Formulário
 app.get('/formulario', async (req, res) => {
     res.render('formulario', {
         titulo: 'Cadastrar Novo Item', // Título para inclusão
@@ -51,11 +43,11 @@ app.get('/formulario', async (req, res) => {
     });
 });
 
-// Rota para o Formulário de ALTERAÇÃO (quando há ID na URL)
+// Rota para o Formulário para edtar
 app.get('/formulario/:id', async (req, res) => {
     let item = null;
     try {
-        item = await Item.findByPk(req.params.id); // Busca o item pelo ID
+        item = await Item.findByPk(req.params.id);
         if (!item) {
             return res.status(404).send('Item não encontrado para edição.');
         }
@@ -64,43 +56,38 @@ app.get('/formulario/:id', async (req, res) => {
         return res.status(500).send('Erro ao carregar item para edição.');
     }
     res.render('formulario', {
-        titulo: 'Editar Item', // Título para edição
-        item: item // Passa o item encontrado para o template
+        titulo: 'Editar Item',
+        item: item 
     });
 });
 
-// ... (suas rotas POST virão abaixo) ...
-
-// Rota para SALVAR um novo item (CREATE) ou ATUALIZAR um existente (UPDATE)
- // ... (suas rotas GET que acabamos de definir, /formulario e /formulario/:id) ...
-
-// Rota POST para SALVAR um NOVO item (CREATE)
+// Rota SALVAR um NOVO item
 app.post('/salvar-item', async (req, res) => {
     try {
         const { nome, descricao } = req.body;
-        await Item.create({ nome, descricao }); // Cria um novo item
+        await Item.create({ nome, descricao });
         console.log('Novo item salvo com sucesso!');
-        res.redirect('/dados'); // Redireciona para a lista
+        res.redirect('/dados');
     } catch (error) {
         console.error('Erro ao salvar o item:', error);
         res.status(500).send('Erro ao salvar o item.');
     }
 });
 
-// Rota POST para ATUALIZAR um item EXISTENTE (UPDATE)
+// Rota para ATUALIZAR um item que ja existe
 app.post('/salvar-item/:id', async (req, res) => {
     try {
         const { nome, descricao } = req.body;
-        const itemId = req.params.id; // Pega o ID da URL
+        const itemId = req.params.id; 
 
-        const item = await Item.findByPk(itemId); // Encontra o item
+        const item = await Item.findByPk(itemId); 
         if (item) {
-            await item.update({ nome, descricao }); // Atualiza
+            await item.update({ nome, descricao }); // aqui ele atualiza o item com os novos dados
             console.log(`Item com ID ${itemId} atualizado com sucesso!`);
         } else {
             return res.status(404).send('Item para atualização não encontrado.');
         }
-        res.redirect('/dados'); // Redireciona para a lista
+        res.redirect('/dados'); 
     } catch (error) {
         console.error('Erro ao atualizar o item:', error);
         res.status(500).send('Erro ao atualizar o item.');
@@ -108,7 +95,7 @@ app.post('/salvar-item/:id', async (req, res) => {
 });
 
 
-// Rota para EXCLUIR um item (DELETE)
+// Rota para EXCLUIR um item
  app.post('/deletar-item/:id', async (req, res) => {
      try {
          const itemId = req.params.id;
@@ -130,15 +117,11 @@ app.post('/salvar-item/:id', async (req, res) => {
      }
 });
 
-
-// --- Início do Servidor ---
-
-// Sincroniza os modelos com o banco de dados
-sequelize.sync({ force: false }) // 'force: true' apaga e recria as tabelas a cada inicialização (cuidado!)
+// Sincroniza com os bancos de dados e inicia o servidor
+sequelize.sync({ force: false })
     .then(() => {
         console.log('Banco de dados sincronizado.');
-        // Inicia o servidor Express APENAS DEPOIS que o banco de dados foi sincronizado
-        const PORT = process.env.PORT || 3000; // Move a definição da porta para aqui
+        const PORT = process.env.PORT || 3000; 
         app.listen(PORT, () => {
             console.log(`Servidor rodando em http://localhost:${PORT}`);
         });

@@ -1,0 +1,264 @@
+/* public/css/style.css */
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jaro:opsz@6..72&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+    font-family: 'idroid';
+    src: url(/imagens/idroid.otf) format('opentype'); /* Caminho ajustado para a fonte */
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --fonte0: Arial, Helvetica, sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    text-align: center;
+    font-family: var(--fonte0);
+}
+
+header {
+    background-image: linear-gradient(to bottom, #3ddc84, #2fa866, #063d1e);
+    text-align: center;
+    width: auto;
+    height: 200px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+header > h1{
+    color: white;
+    font-family: Bebas Neue, cursive;
+    font: 100;
+    text-shadow: 1px 1px 1px black;
+    font-size: 55px;
+}
+header > p {
+    text-align: center;
+    font-size: 22px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    color: white;
+    width: 380px;
+    font-family: Bebas Neue, cursive;
+    text-shadow: 1px 1px 1px black;
+}
+header > nav {
+    position: absolute;
+    left: 10px;
+}
+
+header > nav > a {
+    display: inline-block;
+    margin-top: 150px;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: sans-serif;
+    transition-duration: .5s;
+    font-weight: bold;
+
+}
+
+header > nav > a:hover {
+    background: #3ddc84;
+    border-radius: 5px;
+    color: #1a5c37;
+    text-decoration: underline;
+}
+main {
+    background-color: #83E1AD;
+    font-size: 1em;
+    line-height: 1.7em;
+}
+main a {
+    background-color: #8beeb6;
+    text-decoration: none;
+    padding: 1px;
+}
+
+main a:hover {
+    text-decoration: underline;
+}
+
+a.externo::after {
+    content: '\00A0\1F517';
+}
+article {
+    background-color: white;
+    margin: 0px 80px;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.384);
+    padding: 16px;
+    text-align: justify;
+}
+
+h1 {
+    font-family: 'idroid', sans-serif;
+    color: #063d1E
+
+}
+h2 {
+    font-family: 'idroid', sans-serif;
+    font-size: 23px;
+    color: #268852;
+    background-image: linear-gradient(to right, #83e1ad88, #c5ebd69c, white);
+    padding-left: 7px;
+    margin: 10px 0px 10px 0px;
+}
+
+article > p{
+padding: 10px 0px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.videof {
+    position: relative;
+    background-color: #063d1E;
+    height: 0px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 15px;
+    padding-bottom: 39%;
+}
+
+div.videof > iframe {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+}
+
+.quer {
+    background-color: #2FA866;
+    padding: 4px;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.quer2 {
+    background-color: #C5EBD6;
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.288);
+
+}
+
+.quer2 > ol {
+    margin-left: -30px;
+}
+
+.quer2 > p {
+    padding: 10px;
+}
+
+ol {
+    list-style-type: '\2714\0020\0020';
+    columns: 2;
+    font-family: var(--fonte0);
+    list-style-position: inside;
+    font-weight: bold;
+}
+
+.artc2 {
+    margin-top: -15px;
+    margin-bottom: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.adh {
+    color: #2FA866;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.testelala {
+    padding: 15px;
+}
+
+footer {
+    background-color: #063d1E;
+    margin-left: 80px;
+    margin-right: 80px;
+    color: white;
+    font-weight: normal;
+    padding: 7px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Estilos para o botão de adicionar e formulário */
+.btn-adicionar {
+    display: inline-block;
+    background-color: #2FA866;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-adicionar:hover {
+    background-color: #1a5c37;
+}
+
+form {
+    background-color: #C5EBD6;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: left; /* Alinhar rótulos à esquerda */
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block; /* Cada rótulo em sua própria linha */
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #063d1e;
+}
+
+form input[type="text"],
+form textarea {
+    width: calc(100% - 20px); /* Ocupa quase 100% da largura, descontando padding */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+form button[type="submit"] {
+    background-color: #2FA866;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #1a5c37;
+}

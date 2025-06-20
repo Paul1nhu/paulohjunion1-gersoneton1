@@ -125,23 +125,6 @@ img {
     margin: 0 auto;
 }
 
-.videof {
-    position: relative;
-    background-color: #063d1E;
-    height: 0px;
-    margin-left: 80px;
-    margin-right: 80px;
-    margin-bottom: 15px;
-    padding-bottom: 39%;
-}
-
-div.videof > iframe {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    width: 90%;
-    height: 90%;
-}
 
 .quer {
     background-color: #2FA866;
@@ -175,7 +158,6 @@ ol {
 }
 
 .artc2 {
-    margin-top: -15px;
     margin-bottom: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -202,7 +184,6 @@ footer {
     border-top-right-radius: 10px;
 }
 
-
 .btn-adicionar {
     display: inline-block;
     background-color: #2FA866;
@@ -219,7 +200,6 @@ footer {
 }
 
 form {
-    background-color: #C5EBD6;
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
@@ -259,5 +239,50 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-    background-color: #1a5c37;
+    background-color: #441a5c;
+}
+
+form action {
+    display: inline;
+    margin-left: 10px;
+}
+
+.btn-editar {
+        background-color: #007bff;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-right: 5px;
+    }
+    .btn-editar:hover {
+        background-color: #0056b3;
+    }
+    .btn-excluir:hover {
+        background-color: #3d0909 !important;
+}
+
+li.item-card {
+    background-color: #e6ffe6;
+    border: 1px solid #aaffaa;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    border: 1px solid red !important;
+}
+
+.item-card p {
+    border: 1px solid blue !important;
+    margin-bottom: 5px !important;
 }

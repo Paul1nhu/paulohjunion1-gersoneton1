@@ -11,13 +11,14 @@
     <% if (dadosDoBanco && dadosDoBanco.length > 0) { %>
         <ul style="list-style-type: none; padding: 0;">
             <% dadosDoBanco.forEach(item => { %>
-                <li style="background-color: #e6ffe6; border: 1px solid #aaffaa; margin-bottom: 10px; padding: 15px; border-radius: 8px; text-align: left;">
+                <li style="background-color: #e6ffe6; border: 1px solid #aaffaa; margin-bottom: 10px; padding: 10px; border-radius: 8px; text-align: left;">
                     <h3 style="color: #063d1e; margin-bottom: 5px;"><%= item.nome %></h3>
                     <p><%= item.descricao %></p>
                     <p style="font-size: 0.8em; color: #555;">Criado em: <%= item.createdAt.toLocaleString() %></p>
                     <a href="/formulario/<%= item.id %>" class="btn-editar">Editar</a>
                     <form action="/deletar-item/<%= item.id %>" method="POST" style="display:inline; margin-left: 10px;">
-                        <button type="submit" class="btn-excluir" style="background-color: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">Excluir</button>
+                        <button type="submit" class="btn-excluir" style="background-color: #dc3545; color: white; border: none; padding: 6px 10px; border-radius: 5px; cursor: pointer;"
+                    onclick="return confirm('Tem certeza que deseja excluir este item?');">Excluir</button>
                     </form>
                 </li>
             <% }); %>
@@ -28,20 +29,3 @@
 </article>
 
 <%- include('./layouts/footer') %>
-
-<style>
-    .btn-editar {
-        background-color: #007bff;
-        color: white;
-        padding: 8px 12px;
-        border-radius: 5px;
-        text-decoration: none;
-        margin-right: 5px;
-    }
-    .btn-editar:hover {
-        background-color: #0056b3;
-    }
-    .btn-excluir:hover {
-        background-color: #c82333 !important;
-    }
-</style>
